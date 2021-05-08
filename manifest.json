@@ -1,0 +1,33 @@
+{
+  "name": "Loggly Logger",
+  "action": {},
+  "manifest_version": 3,
+  "version": "0.1",
+  "description": "Loggly Logging",
+  "options_page": "options.html",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs",
+    "idle",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "options.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*"
+      ],
+      "all_frames": true,
+      "js": [
+        "contentscript.js",
+        "loggly.tracker-latest.min.js"
+      ]
+    }
+  ]
+}
